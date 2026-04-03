@@ -10,7 +10,6 @@
       text-align: center;
       padding: 40px 20px;
       background: #f5f5f5;
-      color: #222;
     }
     .box {
       background: white;
@@ -22,41 +21,27 @@
     }
     h1 {
       font-size: 24px;
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-    .lead {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .time-box {
       background: #eef6ff;
-      border: 1px solid #cfe3ff;
       border-radius: 10px;
-      padding: 16px;
+      padding: 20px;
       margin: 20px 0;
     }
     .time-label {
-      font-size: 13px;
+      font-size: 14px;
       color: #666;
-      margin-bottom: 6px;
     }
     .time-value {
-      font-size: 28px;
+      font-size: 40px;
       font-weight: bold;
       color: #007bff;
-    }
-    .time-note {
-      font-size: 13px;
-      color: #666;
-      margin-top: 6px;
-      line-height: 1.5;
+      margin: 10px 0;
     }
     .btn {
       display: block;
-      margin: 20px auto 10px;
+      margin: 20px auto;
       padding: 15px;
       font-size: 18px;
       background: #007bff;
@@ -68,15 +53,6 @@
       font-size: 13px;
       color: #666;
       margin-top: 10px;
-      line-height: 1.5;
-    }
-    .staff-link {
-      margin-top: 24px;
-      font-size: 13px;
-    }
-    .staff-link a {
-      color: #666;
-      text-decoration: none;
     }
   </style>
 </head>
@@ -85,29 +61,44 @@
   <div class="box">
     <h1>快活クラブ<br>オンライン診療</h1>
 
-    <div class="lead">
-      個室からオンラインで医師につながる診療導線のデモです。
-    </div>
-
     <div class="time-box">
-      <div class="time-label">最短予約時間</div>
-      <div class="time-value">15分後</div>
-      <div class="time-note">
-        現在の混雑状況により前後する場合があります
+      <div class="time-label">最短待ち時間</div>
+      <div class="time-value">
+        <span id="minutes">15</span>:<span id="seconds">00</span>
       </div>
+      <div class="sub">順番にご案内しています</div>
     </div>
 
     <a class="btn" href="/start">診療を開始する</a>
 
     <div class="sub">
       ※スタッフがご案内します<br>
-      ※本画面は実証実験用デモです
+      ※実証実験用デモです
     </div>
 
-    <div class="staff-link">
+    <div style="margin-top:20px;font-size:12px;">
       <a href="/admin">管理画面（スタッフ用）</a>
     </div>
   </div>
+
+  <script>
+    let totalSeconds = 15 * 60; // 15分
+
+    function updateTimer() {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent =
+        seconds.toString().padStart(2, "0");
+
+      if (totalSeconds > 0) {
+        totalSeconds--;
+      }
+    }
+
+    setInterval(updateTimer, 1000);
+  </script>
 
 </body>
 </html>
