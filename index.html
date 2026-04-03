@@ -6,116 +6,167 @@
   <title>快活オンライン診療</title>
   <style>
     body {
+      margin: 0;
       font-family: sans-serif;
-      text-align: center;
-      padding: 40px 20px;
-      background: #f5f5f5;
+      background: #f5f7fb;
       color: #222;
     }
-    .box {
-      background: white;
-      padding: 30px 24px;
-      border-radius: 12px;
-      max-width: 420px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .wrap {
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 28px 16px 40px;
     }
-    h1 {
-      font-size: 24px;
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .service-label {
+      font-size: 12px;
+      color: #007bff;
+      font-weight: bold;
+      letter-spacing: 0.08em;
       margin-bottom: 10px;
-      line-height: 1.5;
     }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #1f2d3d;
+    }
+
     .lead {
+      margin: 14px 0 0;
       font-size: 14px;
-      color: #666;
-      margin-bottom: 18px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: #5f6b7a;
     }
-    .notice {
-      background: #fff3cd;
-      border-radius: 8px;
-      padding: 12px;
+
+    .context {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: #f0f6ff;
+      border-radius: 12px;
       font-size: 13px;
-      color: #856404;
-      margin-bottom: 18px;
+      line-height: 1.7;
+      color: #355070;
+      text-align: left;
     }
+
     .status-box {
-      background: #eef6ff;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
+      margin-top: 22px;
+      background: #f8fbff;
+      border: 1px solid #d9e8ff;
+      border-radius: 14px;
+      padding: 20px 16px;
     }
-    .label {
-      font-size: 14px;
-      color: #666;
+
+    .status-label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
     }
+
     .time {
-      font-size: 36px;
+      font-size: 42px;
       font-weight: bold;
       color: #007bff;
-      margin: 10px 0;
+      line-height: 1.2;
+      margin: 0;
     }
+
     .people {
+      margin-top: 10px;
       font-size: 16px;
-      color: #333;
+      color: #374151;
     }
+
     .btn {
       display: block;
-      margin: 24px auto 14px;
-      padding: 15px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 22px;
+      padding: 15px 16px;
       font-size: 18px;
+      font-weight: bold;
       background: #007bff;
-      color: white;
-      border-radius: 8px;
+      color: #fff;
       text-decoration: none;
+      border-radius: 12px;
     }
-    .home-link {
-      margin-top: 10px;
+
+    .home-box {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .home-text {
       font-size: 13px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 8px;
     }
-    .home-link a {
+
+    .home-link {
+      font-size: 14px;
+      font-weight: bold;
       color: #007bff;
       text-decoration: none;
     }
-    .sub {
+
+    .notes {
+      margin-top: 20px;
       font-size: 12px;
-      color: #666;
-      margin-top: 14px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: #6b7280;
+      text-align: left;
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="card">
+      <div class="service-label">ONLINE MEDICAL SERVICE</div>
 
-  <div class="box">
-    <h1>快活オンライン診療</h1>
+      <h1>快活オンライン診療</h1>
 
-    <div class="lead">
-      個室からオンラインで医師につながります
-    </div>
+      <p class="lead">
+        快活クラブの個室から、オンラインで医師につながる診療導線のデモです。
+      </p>
 
-    <div class="notice">
-      現在、快活クラブ個室からのご利用を想定しています
-    </div>
-
-    <div class="status-box">
-      <div class="label">現在の待ち時間</div>
-      <div class="time">
-        <span id="minutes">15</span>:<span id="seconds">00</span>
+      <div class="context">
+        この画面は、快活クラブ個室からのご利用を想定しています。
       </div>
-      <div class="people">あと <span id="people">3</span> 人待ち</div>
-    </div>
 
-    <a class="btn" href="/start">受付する</a>
+      <div class="status-box">
+        <div class="status-label">現在の待ち時間</div>
+        <div class="time">
+          <span id="minutes">15</span>:<span id="seconds">00</span>
+        </div>
+        <div class="people">あと <span id="people">3</span> 人待ち</div>
+      </div>
 
-    <div class="home-link">
-      <a href="/home.html">ご自宅からのご利用はこちら</a>
-    </div>
+      <a class="btn" href="/start">受付する</a>
 
-    <div class="sub">
-      ※診療開始時間は目安です<br>
-      ※混雑状況により前後する場合があります<br>
-      ※本サービスは実証実験中です
+      <div class="home-box">
+        <div class="home-text">
+          ご自宅から利用する場合はこちら
+        </div>
+        <a class="home-link" href="/home.html">ご自宅向けページへ</a>
+      </div>
+
+      <div class="notes">
+        ※ 診療開始時間は目安です。<br>
+        ※ 混雑状況や診療内容により前後する場合があります。<br>
+        ※ 本サービスは実証実験用デモです。
+      </div>
     </div>
   </div>
 
@@ -145,6 +196,5 @@
     setInterval(updateTopStatus, 1000);
     setInterval(updatePeople, 5000);
   </script>
-
 </body>
 </html>
