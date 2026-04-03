@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>受付完了</title>
+  <title>受付完了（デモ）</title>
   <style>
     body {
       font-family: sans-serif;
@@ -39,7 +39,7 @@
       color: #666;
     }
     .time {
-      font-size: 40px;
+      font-size: 42px;
       font-weight: bold;
       color: #007bff;
       margin: 10px 0;
@@ -78,11 +78,6 @@
       border-radius: 8px;
       text-decoration: none;
     }
-    .audio-note {
-      margin-top: 12px;
-      font-size: 12px;
-      color: #888;
-    }
   </style>
 </head>
 <body>
@@ -90,15 +85,15 @@
     <h1>受付完了</h1>
     <p>受付を受け付けました。順番にご案内します。</p>
 
-    <div class="status" id="waitingBox">
-      <div class="label">あなたの診療開始目安</div>
+    <div class="status">
+      <div class="label">あなたの診療開始目安（デモ）</div>
       <div class="time">
-        <span id="minutes">14</span>:<span id="seconds">30</span>
+        <span id="minutes">0</span>:<span id="seconds">30</span>
       </div>
       <div class="people">あと <span id="people">2</span> 人</div>
     </div>
 
-    <p id="waitingText">このままお待ちください</p>
+    <p>このままお待ちください</p>
 
     <div class="next-box" id="nextBox">
       <div class="next-title">まもなく診療が始まります</div>
@@ -107,85 +102,72 @@
     </div>
 
     <div class="note">
-      ※診療開始時間は目安です。<br>
-      混雑状況や診療内容により前後する場合があります。
+      ※デモのため短縮表示しています（実際は数分〜十数分程度）
     </div>
 
     <div class="note">
-      ※順番が近づくと、画面が自動的に切り替わります。
-    </div>
-
-    <div class="audio-note">
-      ※音声案内が流れます
+      ※診療開始時間は目安です。混雑状況により前後します
     </div>
   </div>
 
   <script>
-    let totalSeconds = 14 * 60 + 30;
-    let people = 2;
+    let totalSeconds = 30; // ←ここがデモ用（30秒）
 
+    let people = 2;
     let announcedStart = false;
-    let announcedOneMinute = false;
-    let announcedTenSeconds = false;
-    let shownNextBox = false;
+    let announcedMid = false;
+    let announcedEnd = false;
 
     function speak(text) {
       if (!("speechSynthesis" in window)) return;
-
       window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "ja-JP";
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
-      utterance.volume = 0.9;
-
-      window.speechSynthesis.speak(utterance);
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "ja-JP";
+      window.speechSynthesis.speak(u);
     }
 
-    function updatePersonalStatus() {
-      const minutes = Math.floor(totalSeconds / 60);
-      const seconds = totalSeconds % 60;
+    function update() {
+      const m = Math.floor(totalSeconds / 60);
+      const s = totalSeconds % 60;
 
-      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("minutes").textContent = m;
       document.getElementById("seconds").textContent =
-        seconds.toString().padStart(2, "0");
+        s.toString().padStart(2, "0");
 
+      // 音声
       if (!announcedStart) {
         speak("受付が完了しました。このままお待ちください。");
         announcedStart = true;
       }
 
-      if (totalSeconds <= 60 && !announcedOneMinute) {
+      if (totalSeconds === 15 && !announcedMid) {
         speak("まもなく診療が始まります。画面をご確認ください。");
-        announcedOneMinute = true;
+        announcedMid = true;
       }
 
-      if (totalSeconds <= 10 && !announcedTenSeconds) {
+      if (totalSeconds === 5 && !announcedEnd) {
         speak("診療開始が近づいています。ご準備ください。");
-        announcedTenSeconds = true;
+        announcedEnd = true;
       }
 
-      if (totalSeconds <= 30 && !shownNextBox) {
+      // 次画面演出
+      if (totalSeconds <= 5) {
         document.getElementById("nextBox").style.display = "block";
-        shownNextBox = true;
       }
 
-      if (totalSeconds > 0) {
-        totalSeconds--;
-      }
+      if (totalSeconds > 0) totalSeconds--;
     }
 
     function updatePeople() {
-      if (people > 0 && Math.random() < 0.3) {
+      if (people > 0 && Math.random() < 0.4) {
         people--;
         document.getElementById("people").textContent = people;
       }
     }
 
-    updatePersonalStatus();
-    setInterval(updatePersonalStatus, 1000);
-    setInterval(updatePeople, 6000);
+    update();
+    setInterval(update, 1000);
+    setInterval(updatePeople, 4000);
   </script>
 </body>
 </html>
