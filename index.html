@@ -1,27 +1,63 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>オンライン診療</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>オンライン診療入口</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .btn {
+      display: block;
+      margin: 20px auto;
+      padding: 15px;
+      font-size: 18px;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .sub {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
 </head>
+<body>
 
-<body style="font-family:sans-serif; text-align:center; padding:40px;">
+  <div class="box">
+    <h1>快活クラブ<br>オンライン診療</h1>
 
-  <h1>今すぐ相談できます</h1>
-  <p>この個室からそのまま受診可能</p>
+    <a class="btn" href="/start">
+      診療を開始する
+    </a>
 
-  <h2>最短：15分後</h2>
+    <div class="sub">
+      ※スタッフがご案内します
+    </div>
 
-  <a href="#" style="display:inline-block; padding:15px 30px; background:green; color:white; text-decoration:none; border-radius:8px;">
-    最短で相談する
-  </a>
+    <hr>
 
-  <p style="margin-top:30px;">
-    ① QRを読み取る<br>
-    ② 時間を選ぶ<br>
-    ③ そのまま受診
-  </p>
+    <a href="/admin">管理画面（スタッフ用）</a>
+  </div>
 
 </body>
 </html>
