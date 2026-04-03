@@ -47,16 +47,7 @@
       font-size: 13px;
       color: #666;
       margin-top: 18px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      font-size: 17px;
-      background: #007bff;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -67,15 +58,23 @@
 
     <div class="status">
       <div>あなたの診療開始目安</div>
-      <div class="time"><span id="minutes">14</span>:<span id="seconds">30</span></div>
+      <div class="time">
+        <span id="minutes">14</span>:<span id="seconds">30</span>
+      </div>
       <div class="people">あと <span id="people">2</span> 人</div>
     </div>
 
     <p>このままお待ちください</p>
 
-    <a class="btn" href="/">トップへ戻る</a>
+    <div class="note">
+      ※診療開始時間は目安です。<br>
+      混雑状況や診療内容により前後する場合があります。
+    </div>
 
-    <p class="note">※実証実験用デモです</p>
+    <div class="note">
+      ※順番が近づきましたらスタッフよりご案内いたします。
+    </div>
+
   </div>
 
   <script>
