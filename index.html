@@ -31,7 +31,7 @@
       line-height: 1.6;
       margin-bottom: 18px;
     }
-    .time-box {
+    .status-box {
       background: #eef6ff;
       border-radius: 10px;
       padding: 20px;
@@ -40,12 +40,13 @@
     .label {
       font-size: 14px;
       color: #666;
+      margin-bottom: 8px;
     }
     .time {
       font-size: 40px;
       font-weight: bold;
       color: #007bff;
-      margin: 10px 0;
+      margin: 8px 0;
     }
     .people {
       font-size: 18px;
@@ -87,7 +88,7 @@
       個室からオンラインで医師につながる診療導線のデモです
     </div>
 
-    <div class="time-box">
+    <div class="status-box">
       <div class="label">現在の待ち時間</div>
       <div class="time">
         <span id="minutes">15</span>:<span id="seconds">00</span>
@@ -98,7 +99,7 @@
     <a class="btn" href="/start">受付する</a>
 
     <div class="sub">
-      順番にご案内します<br>
+      待ち時間と待ち人数をご確認のうえ、受付してください<br>
       ※実証実験用デモです
     </div>
 
@@ -111,7 +112,7 @@
     let totalSeconds = 15 * 60;
     let people = 3;
 
-    function updateTimer() {
+    function updateTopStatus() {
       const minutes = Math.floor(totalSeconds / 60);
       const seconds = totalSeconds % 60;
 
@@ -125,13 +126,14 @@
     }
 
     function updatePeople() {
-      if (people > 1 && Math.random() < 0.3) {
+      if (people > 1 && Math.random() < 0.25) {
         people--;
         document.getElementById("people").textContent = people;
       }
     }
 
-    setInterval(updateTimer, 1000);
+    updateTopStatus();
+    setInterval(updateTopStatus, 1000);
     setInterval(updatePeople, 5000);
   </script>
 

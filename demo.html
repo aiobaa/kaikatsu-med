@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>オンライン診療 接続中</title>
+  <title>受付完了</title>
   <style>
     body {
       font-family: sans-serif;
@@ -27,28 +27,26 @@
     p {
       line-height: 1.6;
     }
-    .spinner {
-      width: 56px;
-      height: 56px;
-      margin: 24px auto;
-      border: 6px solid #ddd;
-      border-top: 6px solid #007bff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+    .status {
+      background: #eef6ff;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 22px 0;
     }
-    .count {
+    .time {
       font-size: 40px;
       font-weight: bold;
       color: #007bff;
-      margin: 20px 0 8px;
+      margin: 10px 0;
+    }
+    .people {
+      font-size: 18px;
+      color: #333;
     }
     .note {
       font-size: 13px;
       color: #666;
-      margin-top: 20px;
-    }
-    .hidden {
-      display: none;
+      margin-top: 18px;
     }
     .btn {
       display: inline-block;
@@ -60,44 +58,53 @@
       border-radius: 8px;
       text-decoration: none;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body>
-  <div class="box" id="step1">
-    <h1>オンライン診療に接続中...</h1>
-    <p>医療機関へ接続しています。<br>そのままお待ちください。</p>
-    <div class="spinner"></div>
-    <div class="count"><span id="count">3</span></div>
-    <p>秒後に次の画面へ進みます</p>
-    <p class="note">※デモ画面です</p>
-  </div>
+  <div class="box">
+    <h1>受付完了</h1>
+    <p>受付を受け付けました。<br>順番にご案内します。</p>
 
-  <div class="box hidden" id="step2">
-    <h1>接続準備が整いました</h1>
-    <p>スタッフがまもなくご案内します。<br>この画面のままお待ちください。</p>
+    <div class="status">
+      <div>あなたの診療開始目安</div>
+      <div class="time"><span id="minutes">14</span>:<span id="seconds">30</span></div>
+      <div class="people">あと <span id="people">2</span> 人</div>
+    </div>
+
+    <p>このままお待ちください</p>
+
     <a class="btn" href="/">トップへ戻る</a>
-    <p class="note">※デモ画面です</p>
+
+    <p class="note">※実証実験用デモです</p>
   </div>
 
   <script>
-    let remaining = 3;
-    const countEl = document.getElementById("count");
+    let totalSeconds = 14 * 60 + 30;
+    let people = 2;
 
-    const timer = setInterval(() => {
-      remaining -= 1;
+    function updatePersonalStatus() {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
 
-      if (remaining <= 0) {
-        clearInterval(timer);
-        document.getElementById("step1").classList.add("hidden");
-        document.getElementById("step2").classList.remove("hidden");
-      } else {
-        countEl.textContent = remaining;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent =
+        seconds.toString().padStart(2, "0");
+
+      if (totalSeconds > 0) {
+        totalSeconds--;
       }
-    }, 1000);
+    }
+
+    function updatePeople() {
+      if (people > 0 && Math.random() < 0.3) {
+        people--;
+        document.getElementById("people").textContent = people;
+      }
+    }
+
+    updatePersonalStatus();
+    setInterval(updatePersonalStatus, 1000);
+    setInterval(updatePeople, 6000);
   </script>
 </body>
 </html>
