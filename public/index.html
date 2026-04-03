@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快活 個室オンライン診療 検証フォーム</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .wrap {
+      max-width: 760px;
+      margin: 40px auto;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    p.desc {
+      color: #555;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    button {
+      margin-top: 24px;
+      background: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .link {
+      margin-top: 20px;
+    }
+    .link a {
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>快活 個室オンライン診療 検証フォーム</h1>
+    <p class="desc">
+      快活クラブ個室内でのオンライン診療利用について、
+      簡易的に反応や利用状況を記録するためのプロトタイプです。
+    </p>
+
+    <form method="POST" action="/submit">
+      <label for="store">店舗名</label>
+      <input type="text" id="store" name="store" placeholder="例：新宿西口店" />
+
+      <label for="booth">ブース番号</label>
+      <input type="text" id="booth" name="booth" placeholder="例：A-2" />
+
+      <label for="employeeType">利用者区分</label>
+      <select id="employeeType" name="employeeType">
+        <option value="">選択してください</option>
+        <option value="AOKI社員">AOKI社員</option>
+        <option value="快活スタッフ">快活スタッフ</option>
+        <option value="一般利用者">一般利用者</option>
+      </select>
+
+      <label for="useReason">利用目的</label>
+      <select id="useReason" name="useReason">
+        <option value="">選択してください</option>
+        <option value="オンライン診療">オンライン診療</option>
+        <option value="健康相談">健康相談</option>
+        <option value="テスト利用">テスト利用</option>
+        <option value="その他">その他</option>
+      </select>
+
+      <label for="reaction">反応</label>
+      <select id="reaction" name="reaction">
+        <option value="">選択してください</option>
+        <option value="良い">良い</option>
+        <option value="普通">普通</option>
+        <option value="悪い">悪い</option>
+        <option value="不安あり">不安あり</option>
+      </select>
+
+      <label for="notes">備考</label>
+      <textarea id="notes" name="notes" placeholder="自由記載"></textarea>
+
+      <button type="submit">送信する</button>
+    </form>
+
+    <div class="link">
+      <a href="/admin">管理画面を見る</a>
+    </div>
+  </div>
+</body>
+</html>
