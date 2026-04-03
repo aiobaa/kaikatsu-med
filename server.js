@@ -7,14 +7,10 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
-// ミドルウェア
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
-// =====================
-// 利用者：診療開始（デモ画面へ）
-// =====================
 app.get("/start", (req, res) => {
   let records = [];
 
@@ -32,13 +28,9 @@ app.get("/start", (req, res) => {
 
   fs.writeFileSync("data.json", JSON.stringify(records, null, 2));
 
-  // デモ画面へ
   res.sendFile(path.join(__dirname, "demo.html"));
 });
 
-// =====================
-// スタッフ用：入力保存
-// =====================
 app.post("/submit", (req, res) => {
   const data = req.body;
 
@@ -64,9 +56,6 @@ app.post("/submit", (req, res) => {
   `);
 });
 
-// =====================
-// 管理画面
-// =====================
 app.get("/admin", (req, res) => {
   let records = [];
 
@@ -102,9 +91,6 @@ app.get("/admin", (req, res) => {
   res.send(html);
 });
 
-// =====================
-// サーバー起動
-// =====================
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
