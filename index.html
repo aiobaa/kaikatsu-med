@@ -1,32 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>オンライン診療入口</title>
+  <title>快活クラブ オンライン診療</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
-      padding: 40px;
+      padding: 40px 20px;
       background: #f5f5f5;
-    }
-    h1 {
-      font-size: 22px;
-      margin-bottom: 20px;
+      color: #222;
     }
     .box {
       background: white;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 400px;
+      padding: 30px 24px;
+      border-radius: 12px;
+      max-width: 420px;
       margin: auto;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .lead {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .time-box {
+      background: #eef6ff;
+      border: 1px solid #cfe3ff;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .time-label {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+    .time-value {
+      font-size: 28px;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .time-note {
+      font-size: 13px;
+      color: #666;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
     .btn {
       display: block;
-      margin: 20px auto;
+      margin: 20px auto 10px;
       padding: 15px;
       font-size: 18px;
       background: #007bff;
@@ -35,9 +65,18 @@
       text-decoration: none;
     }
     .sub {
-      font-size: 14px;
+      font-size: 13px;
       color: #666;
       margin-top: 10px;
+      line-height: 1.5;
+    }
+    .staff-link {
+      margin-top: 24px;
+      font-size: 13px;
+    }
+    .staff-link a {
+      color: #666;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -46,17 +85,28 @@
   <div class="box">
     <h1>快活クラブ<br>オンライン診療</h1>
 
-    <a class="btn" href="/start">
-      診療を開始する
-    </a>
-
-    <div class="sub">
-      ※スタッフがご案内します
+    <div class="lead">
+      個室からオンラインで医師につながる診療導線のデモです。
     </div>
 
-    <hr>
+    <div class="time-box">
+      <div class="time-label">最短予約時間</div>
+      <div class="time-value">15分後</div>
+      <div class="time-note">
+        現在の混雑状況により前後する場合があります
+      </div>
+    </div>
 
-    <a href="/admin">管理画面（スタッフ用）</a>
+    <a class="btn" href="/start">診療を開始する</a>
+
+    <div class="sub">
+      ※スタッフがご案内します<br>
+      ※本画面は実証実験用デモです
+    </div>
+
+    <div class="staff-link">
+      <a href="/admin">管理画面（スタッフ用）</a>
+    </div>
   </div>
 
 </body>
