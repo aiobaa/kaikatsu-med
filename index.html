@@ -10,6 +10,7 @@
       text-align: center;
       padding: 40px 20px;
       background: #f5f5f5;
+      color: #222;
     }
     .box {
       background: white;
@@ -22,6 +23,13 @@
     h1 {
       font-size: 24px;
       margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .lead {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
     .time-box {
       background: #eef6ff;
@@ -29,19 +37,24 @@
       padding: 20px;
       margin: 20px 0;
     }
-    .time-label {
+    .label {
       font-size: 14px;
       color: #666;
     }
-    .time-value {
+    .time {
       font-size: 40px;
       font-weight: bold;
       color: #007bff;
       margin: 10px 0;
     }
+    .people {
+      font-size: 18px;
+      color: #333;
+      margin-top: 8px;
+    }
     .btn {
       display: block;
-      margin: 20px auto;
+      margin: 24px auto 14px;
       padding: 15px;
       font-size: 18px;
       background: #007bff;
@@ -53,6 +66,15 @@
       font-size: 13px;
       color: #666;
       margin-top: 10px;
+      line-height: 1.6;
+    }
+    .staff-link {
+      margin-top: 22px;
+      font-size: 12px;
+    }
+    .staff-link a {
+      color: #666;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -61,28 +83,33 @@
   <div class="box">
     <h1>快活クラブ<br>オンライン診療</h1>
 
-    <div class="time-box">
-      <div class="time-label">最短待ち時間</div>
-      <div class="time-value">
-        <span id="minutes">15</span>:<span id="seconds">00</span>
-      </div>
-      <div class="sub">順番にご案内しています</div>
+    <div class="lead">
+      個室からオンラインで医師につながる診療導線のデモです
     </div>
 
-    <a class="btn" href="/start">診療を開始する</a>
+    <div class="time-box">
+      <div class="label">現在の待ち時間</div>
+      <div class="time">
+        <span id="minutes">15</span>:<span id="seconds">00</span>
+      </div>
+      <div class="people">あと <span id="people">3</span> 人待ち</div>
+    </div>
+
+    <a class="btn" href="/start">受付する</a>
 
     <div class="sub">
-      ※スタッフがご案内します<br>
+      順番にご案内します<br>
       ※実証実験用デモです
     </div>
 
-    <div style="margin-top:20px;font-size:12px;">
+    <div class="staff-link">
       <a href="/admin">管理画面（スタッフ用）</a>
     </div>
   </div>
 
   <script>
-    let totalSeconds = 15 * 60; // 15分
+    let totalSeconds = 15 * 60;
+    let people = 3;
 
     function updateTimer() {
       const minutes = Math.floor(totalSeconds / 60);
@@ -97,7 +124,15 @@
       }
     }
 
+    function updatePeople() {
+      if (people > 1 && Math.random() < 0.3) {
+        people--;
+        document.getElementById("people").textContent = people;
+      }
+    }
+
     setInterval(updateTimer, 1000);
+    setInterval(updatePeople, 5000);
   </script>
 
 </body>
