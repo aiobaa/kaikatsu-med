@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>オンライン診療 接続中</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      background: #f5f5f5;
+      color: #222;
+    }
+    .box {
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      max-width: 420px;
+      margin: 40px auto;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .spinner {
+      width: 56px;
+      height: 56px;
+      margin: 24px auto;
+      border: 6px solid #ddd;
+      border-top: 6px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .note {
+      font-size: 13px;
+      color: #666;
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 24px;
+      font-size: 17px;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="step1">
+    <h1>オンライン診療に接続中...</h1>
+    <p>医療機関へ接続しています。<br>そのままお待ちください。</p>
+    <div class="spinner"></div>
+    <p class="note">※デモ画面です</p>
+  </div>
+
+  <div class="box hidden" id="step2">
+    <h1>接続準備が整いました</h1>
+    <p>スタッフのご案内に沿って、次へお進みください。</p>
+    <a class="btn" href="/admin">スタッフ確認画面へ</a>
+    <p class="note">※デモ画面です</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }, 3000);
+  </script>
+</body>
+</html>

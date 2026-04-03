@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
 // =====================
-// 利用者：診療開始ボタン
+// 利用者：診療開始（デモ画面へ）
 // =====================
 app.get("/start", (req, res) => {
   let records = [];
@@ -32,10 +32,8 @@ app.get("/start", (req, res) => {
 
   fs.writeFileSync("data.json", JSON.stringify(records, null, 2));
 
-  res.send(`
-    <h2>接続中です...</h2>
-    <p>スタッフの案内をお待ちください</p>
-  `);
+  // デモ画面へ
+  res.sendFile(path.join(__dirname, "demo.html"));
 });
 
 // =====================
